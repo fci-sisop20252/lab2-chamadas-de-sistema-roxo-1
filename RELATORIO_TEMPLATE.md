@@ -13,13 +13,14 @@ strace -e write ./ex1b_write
 ### Análise
 
 **1. Quantas syscalls write() cada programa gerou?**
-- ex1a_printf: _____ syscalls
-- ex1b_write: _____ syscalls
+- ex1a_printf: 9 syscalls
+- ex1b_write: 7 syscalls
 
 **2. Por que há diferença entre printf() e write()?**
 
 ```
-[Sua análise aqui]
+printf() é mais fácil de usar e é a escolha comum para a maioria das tarefas.
+write() é mais poderosa e usada quando você precisa de controle total sobre a saída, especialmente em programação de sistemas.
 ```
 
 **3. Qual implementação você acha que é mais eficiente? Por quê?**
