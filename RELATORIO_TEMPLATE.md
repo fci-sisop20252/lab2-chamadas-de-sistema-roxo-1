@@ -101,29 +101,33 @@ Pois ao chegar ao final do arquivo e não ter mais bytes para ler, a função re
 ## Exercício 4 - Cópia de Arquivo
 
 ### Resultados:
-- Bytes copiados: _____
-- Operações: _____
-- Tempo: _____ segundos
-- Throughput: _____ KB/s
+- Bytes copiados: 1364
+- Operações: 6
+- Tempo: 0.000157 segundos
+- Throughput: 8484.28 KB/s
 
 ### Verificação:
 ```bash
 diff dados/origem.txt dados/destino.txt
 ```
-Resultado: [ ] Idênticos [ ] Diferentes
+Resultado: [X] Idênticos [ ] Diferentes
 
 ### Análise
 
 **1. Por que devemos verificar que bytes_escritos == bytes_lidos?**
 
 ```
-[Sua análise aqui]
+Pois syscall não garante que todos os bytes serão escritos em uma única operação.
 ```
 
 **2. Que flags são essenciais no open() do destino?**
 
 ```
-[Sua análise aqui]
+O_WRONLY: Abre o arquivo apenas para escrita, garantindo que você não leia acidentalmente do arquivo de destino.
+
+O_CREAT: Cria o arquivo se ele não existir, sem essa flag, o programa falharia se o arquivo destino.txt não existisse.
+
+O_TRUNC: Trunca o arquivo para o tamanho zero se ele já existir, garante que o conteúdo do arquivo de origem não seja apenas adicionado ao final de um arquivo de destino já existente, mas sim o substitua completamente.
 ```
 
 ---
@@ -135,19 +139,17 @@ Resultado: [ ] Idênticos [ ] Diferentes
 **1. Como as syscalls demonstram a transição usuário → kernel?**
 
 ```
-[Sua análise aqui]
-```
+Syscalls são a ponte entre o seu código e o sistema operacional, permitindo que seu programa, que roda em um ambiente protegido (espaço do usuário), acesse recursos e serviços privilegiados do kernel. Elas demonstram a transição entre os dois espaços, garantindo a segurança e estabilidade do sistema.```
 
 **2. Qual é o seu entendimento sobre a importância dos file descriptors?**
 
 ```
-[Sua análise aqui]
-```
+Os file descriptors são identificadores numéricos que o kernel usa para se referir a arquivos, dispositivos e outras fontes/destinos de entrada e saída. Eles simplificam a interação do seu programa com os recursos do sistema, permitindo que você use um número simples para operações como ler ou escrever, em vez de lidar diretamente com os nomes dos arquivos.```
 
 **3. Discorra sobre a relação entre o tamanho do buffer e performance:**
 
 ```
-[Sua análise aqui]
+Quanto maior o tamanho do buffer, a syscall lê uma quantidade maior de dados do arquivo a cada vez, ou seja, menos syscall's, mais rápido e eficiente.
 ```
 
 ### Comparação de Performance
@@ -163,15 +165,14 @@ time cp dados/origem.txt dados/destino_cp.txt
 **Por que você acha que foi mais rápido?**
 
 ```
-[Sua análise aqui]
-```
+O cp, pois é uma ferramenta de produção que foi otimizada para a velocidade máxima.```
 
 ---
 
 ## Entrega
 
 Certifique-se de ter:
-- [ ] Todos os códigos com TODOs completados
+- [X] Todos os códigos com TODOs completados
 - [ ] Traces salvos em `traces/`
 - [ ] Este relatório preenchido como `RELATORIO.md`
 
