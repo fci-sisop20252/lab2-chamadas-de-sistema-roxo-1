@@ -68,32 +68,32 @@ Pois ao chegar ao final do arquivo e não ter mais bytes para ler, a função re
 ## Exercício 3 - Contador com Loop
 
 ### Resultados (BUFFER_SIZE = 64):
-- Linhas: _____ (esperado: 25)
-- Caracteres: _____
-- Chamadas read(): _____
-- Tempo: _____ segundos
+- Linhas: 24 (esperado: 25)
+- Caracteres: 1299
+- Chamadas read(): 21
+- Tempo: 0.000304 segundos
 
 ### Experimentos com buffer:
 
 | Buffer Size | Chamadas read() | Tempo (s) |
 |-------------|-----------------|-----------|
-| 16          |                 |           |
-| 64          |                 |           |
-| 256         |                 |           |
-| 1024        |                 |           |
+| 16          |       87        | 0.000391  |
+| 64          |       21        | 0.000304  |
+| 256         |        6        | 0.000127  |
+| 1024        |        2        | 0.000165  |
 
 ### Análise
 
 **1. Como o tamanho do buffer afeta o número de syscalls?**
 
 ```
-[Sua análise aqui]
+Quanto maior o tamanho do buffer, a syscall lê uma quantidade maior de dados do arquivo a cada vez, ou seja, menos syscall's.
 ```
 
 **2. Como você detecta o fim do arquivo?**
 
 ```
-[Sua análise aqui]
+Pois ao chegar ao final do arquivo e não ter mais bytes para ler, a função retornou 0.
 ```
 
 ---
