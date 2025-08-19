@@ -18,10 +18,9 @@ strace -e write ./ex1b_write
 
 **2. Por que há diferença entre printf() e write()?**
 
-```
-printf() é mais fácil de usar e é a escolha comum para a maioria das tarefas.
-write() é mais poderosa e usada quando você precisa de controle total sobre a saída, especialmente em programação de sistemas.
-```
+printf() é mais fácil de usar e é a escolha comum para a maioria das tarefas. (Função de uma biblioteca)
+write() é mais poderosa e usada quando você precisa de controle total sobre a saída, especialmente em programação de sistemas. (chamada de sistema)
+
 
 **3. Qual implementação você acha que é mais eficiente? Por quê?**
 
