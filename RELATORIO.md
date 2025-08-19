@@ -173,8 +173,8 @@ O cp, pois é uma ferramenta de produção que foi otimizada para a velocidade m
 
 Certifique-se de ter:
 - [X] Todos os códigos com TODOs completados
-- [ ] Traces salvos em `traces/`
-- [ ] Este relatório preenchido como `RELATORIO.md`
+- [X] Traces salvos em `traces/`
+- [X] Este relatório preenchido como `RELATORIO.md`
 
 ```bash
 strace -e write -o traces/ex1a_trace.txt ./ex1a_printf
