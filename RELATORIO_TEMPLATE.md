@@ -46,13 +46,21 @@ strace -e open,read,close ./ex2_leitura
 **1. Por que o file descriptor não foi 0, 1 ou 2?**
 
 ```
-[Sua análise aqui]
+O descritor de arquivo retornado pela chamada open() não foi 0, 1 ou 2 porque esses números são reservados para os descritores de arquivo padrão do sistema:
+
+0: stdin (entrada padrão)
+
+1: stdout (saída padrão)
+
+2: stderr (saída de erro padrão)
+
+Esses descritores são abertos automaticamente pelo sistema operacional quando um programa é iniciado. A função open() sempre atribui o próximo descritor de arquivo disponível, que, neste caso, seria o 3.
 ```
 
 **2. Como você sabe que o arquivo foi lido completamente?**
 
 ```
-[Sua análise aqui]
+Pois ao chegar ao final do arquivo e não ter mais bytes para ler, a função retornou 0.
 ```
 
 ---
