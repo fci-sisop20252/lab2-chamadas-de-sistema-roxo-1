@@ -25,7 +25,7 @@ write() é mais poderosa e usada quando você precisa de controle total sobre a 
 **3. Qual implementação você acha que é mais eficiente? Por quê?**
 
 ```
-[Sua análise aqui]
+printf(), pois além de ser de alto nível, agrupa muitas operações em uma única syscall
 ```
 
 ---
@@ -33,8 +33,8 @@ write() é mais poderosa e usada quando você precisa de controle total sobre a 
 ## Exercício 2 - Leitura de Arquivo
 
 ### Resultados da execução:
-- File descriptor: _____
-- Bytes lidos: _____
+- File descriptor: 3
+- Bytes lidos: 127
 
 ### Comando strace:
 ```bash
