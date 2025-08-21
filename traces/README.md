@@ -34,6 +34,7 @@ strace -o traces/ex4_trace.txt ./ex4_copia
 ## Como Analisar os Traces
 
 ### Interpretar Linhas do strace
+Veja mais detalhes em [Guia do strace](guia_strace.md).
 
 Formato geral:
 ```
@@ -42,12 +43,12 @@ syscall(parâmetros) = valor_retorno [comentário]
 
 Exemplo:
 ```
-open("dados/teste1.txt", O_RDONLY) = 3
+openat(AT_FDCWD, "dados/teste1.txt", O_RDONLY) = 3
 read(3, "conteúdo do arquivo...", 127) = 45
 close(3) = 0
 ```
 
-### Comandos Úteis para Análise
+### Comandos Úteis para Análise dos Traces Salvos
 
 ```bash
 # Contar syscalls write nos exercícios 1a vs 1b
@@ -55,7 +56,7 @@ grep -c "write(" traces/ex1a_trace.txt
 grep -c "write(" traces/ex1b_trace.txt
 
 # Analisar operações de arquivo no exercício 2
-grep -E "(open|read|close)" traces/ex2_trace.txt
+grep -E "(openat|read|close)" traces/ex2_trace.txt
 
 # Ver estatísticas detalhadas do exercício 3
 cat traces/ex3_stats.txt
